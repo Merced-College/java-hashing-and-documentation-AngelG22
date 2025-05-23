@@ -1,4 +1,4 @@
-package hashingAndDocumentation;//comment this out if you do not need a package
+//package hashingAndDocumentation;//comment this out if you do not need a package
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -132,7 +132,7 @@ public class SongProgram {
         }
 
         // Print all songs
-        program.printAllSongs();
+        //program.printAllSongs();
     }
 }
 

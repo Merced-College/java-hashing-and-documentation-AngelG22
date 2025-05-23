@@ -1,10 +1,10 @@
-package hashingAndDocumentation;
+//package hashingAndDocumentation;
 import java.util.List;
 import java.util.Arrays;
 import java.util.Objects;
 
 public class SongRecord {
-    // Instance variables
+    // Instance variablesjava
     private double valence;
     private int year;
     private double acousticness;
