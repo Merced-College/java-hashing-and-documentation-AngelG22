@@ -1,3 +1,11 @@
+/**
+* SongRecord.java
+* @author Angel Grajeda
+* @since 2025-04-15
+*  This class represents a single song's data with various musical features,
+* metadata, and information parsed from a CSV string.
+*/
+
 //package hashingAndDocumentation;
 import java.util.List;
 import java.util.Arrays;
@@ -25,7 +33,11 @@ public class SongRecord {
     private double speechiness;
     private double tempo;
 
-    // Default constructor
+    /**
+     * Default constructor that creates a song with placeholder/default values.
+     * Precondition: none
+     * Postcondition: all fields are initialized with default values
+     */
     public SongRecord() {
         this.valence = 0.0;
         this.year = 0;
@@ -48,8 +60,13 @@ public class SongRecord {
         this.tempo = 0.0;
     }
 
-    // Constructor that takes a CSV string and parses it
-    public SongRecord(String data) {
+    /**
+     * Constructor that parses a CSV string to initialize the song's fields.
+     * Precondition: data is a valid comma-separated string with 19 values
+     * Postcondition: fields are set based on the parsed data
+     * @param data the CSV line representing one song's data
+     */    
+        public SongRecord(String data) {
         String[] fields = data.split(","); // Assuming comma-separated values
         
     	//fields = data.split(",");//means no quotes in the record
@@ -81,9 +98,11 @@ public class SongRecord {
     }
 
     // Getters and setters for each field
+    /** return the song's valence */
     public double getValence() { return valence; }
     public void setValence(double valence) { this.valence = valence; }
-
+    
+    /** return the release year */
     public int getYear() { return year; }
     public void setYear(int year) { this.year = year; }
 
@@ -138,6 +157,10 @@ public class SongRecord {
     public double getTempo() { return tempo; }
     public void setTempo(double tempo) { this.tempo = tempo; }
 
+    /**
+     * Returns a string representation of the song.
+     * return string with all field values
+     */
     // toString method
     @Override
     public String toString() {
@@ -165,6 +188,11 @@ public class SongRecord {
     }
 
     // equals method
+    /**
+     * Compares two SongRecord objects for equality.
+     * @param o the object to compare
+     * return true if all fields are equal, false otherwise
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -190,7 +218,10 @@ public class SongRecord {
                 Double.compare(that.speechiness, speechiness) == 0 &&
                 Double.compare(that.tempo, tempo) == 0;
     }
-
+    /**
+     * Generates a hash code for the song.
+     * return the hash code based on the song's fields
+     */
     @Override
     public int hashCode() {
         return Objects.hash(valence, year, acousticness, artists, danceability, durationMs, energy, explicit, id,

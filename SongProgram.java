@@ -1,3 +1,12 @@
+/**
+ * SongProgram.java
+ * @author Angel Grajeda
+ * @since 2025-04-15
+ * 
+ * This class handles loading song data from a CSV file and then afterwards storing it in a HashMap,
+ * and providing methods to search and display songs with a GUI or console output.
+ */
+
 //package hashingAndDocumentation;//comment this out if you do not need a package
 
 import java.io.BufferedReader;
@@ -19,16 +28,27 @@ public class SongProgram {
     private HashMap<String, SongRecord> songMap;
 
     // Constructor
+    /**
+     * Default constructor initializes an empty song map.
+     * Preconditions: none
+     * Postconditions: songMap is initialized
+     */
     public SongProgram() {
         songMap = new HashMap<>();
     }
 
     // Method to load songs from a CSV file
+    /**
+     * Loads song data from a CSV file.
+     * Preconditions: filePath points to a valid CSV file formatted as expected
+     * Postconditions: songMap is populated with SongRecord objects from the file
+     * @param filePath the path to the CSV file
+     */
     public void loadSongsFromCSV(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             
-            //read in first line and do nothing with it
+            // Read and skip the header line
             br.readLine();
             
             while ((line = br.readLine()) != null) {
@@ -43,13 +63,25 @@ public class SongProgram {
             System.err.println("Error reading CSV file: " + e.getMessage());
         }
     }
-
+        
     // Method to retrieve a SongRecord by ID
+    /**
+     * Retrieves a song by its ID.
+     * Preconditions: id is a non-null String
+     * Postconditions: returns the SongRecord if found, null otherwise
+     * @param id the song ID to search for
+     * return the SongRecord with the given ID or null if not found
+     */
     public SongRecord getSongById(String id) {
         return songMap.get(id);
     }
 
     // Method to print all songs (for debugging or display purposes)
+    /**
+     * Prints all songs to the console.
+     * Preconditions: songMap is populated
+     * Postconditions: each SongRecord is printed
+     */
     public void printAllSongs() {
         for (SongRecord song : songMap.values()) {
             System.out.println(song);
@@ -57,6 +89,11 @@ public class SongProgram {
     }
     
     // GUI method to search for a song by ID
+    /**
+     * Opens a simple GUI for searching songs by ID.
+     * Preconditions: songMap may or may not contain songs
+     * Postconditions: GUI is displayed, user can search for songs by ID
+     */
     public void openSearchGui() {
         // Create the main frame
         JFrame frame = new JFrame("Song Lookup");
@@ -103,6 +140,10 @@ public class SongProgram {
     }
 
     // Main method to demonstrate functionality and open GUI
+    /**
+     * Alternate main method to open the GUI.
+     * @param args command-line arguments
+     */
     public static void main2(String[] args) {
         SongProgram program = new SongProgram();
 
@@ -115,6 +156,10 @@ public class SongProgram {
     }
 
     // Main method to demonstrate functionality
+    /**
+     * Main method to test CSV loading and song retrieval.
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         SongProgram program = new SongProgram();
 
